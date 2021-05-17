@@ -52,9 +52,11 @@ document.querySelector('header h1').addEventListener('mouseup', e => {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker
-            .register('/Lab7/sw.js', {scope: '/Lab7/'})
-            .then(registration => console.log('SW Registration success: ', registration.scope), 
-        err => console.log('SW Registration error: ', err));
+            .register('/Lab7/sw.js')
+            .then(
+                registration => console.log('SW Registration success: ', registration.scope), 
+                err => console.log('SW Registration error: ', err)
+            );
     });       
 }
   
