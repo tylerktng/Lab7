@@ -7,7 +7,7 @@ const title = document.querySelector('header h1');
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function(newState, entry, entryIndex) {
+router.setState = function(newState, addStack, entry, entryIndex) {
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
@@ -39,18 +39,23 @@ router.setState = function(newState, entry, entryIndex) {
    */
     switch(newState) {
         case 0:
-            // history.pushState({page: 0}, 'main', '');
+            if(addStack) {
+                history.pushState({page: 0}, 'main', '');
+            }
             document.body.className = '';
             title.textContent = 'Journal Entries';
             break;
         case 1:
-            history.pushState({page: 1}, 'settings', '#settings');
+            if(addStack) {
+                history.pushState({page: 1}, 'settings', '#settings');
+            }
             title.textContent = 'Settings';
-
             document.body.className = 'settings';
             break;
         case 2:
-            history.pushState({page: 2}, 'entry', '#entry' + entryIndex);
+            if(addStack) {
+                history.pushState({'page': 2, 'entry': entry, 'index': entryIndex}, 'entry', '#entry' + entryIndex);
+            }
             document.body.className = 'single-entry';
             title.textContent = "Entry " + entryIndex;
             document.body.removeChild(document.querySelector('entry-page'));
@@ -63,5 +68,5 @@ router.setState = function(newState, entry, entryIndex) {
 
 router.listener = function(event) {
     let state = event.state; 
-    router.setState(state.page);
+    router.setState(state.page, false, state.entry, state.index);
 }

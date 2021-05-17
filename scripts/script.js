@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             element.addEventListener('mouseup', e => {
                 if(e.button === 0) {
                     if(history.state.page === 0) {
-                        router.setState(2, element.entry, index + 1);
+                        router.setState(2, true, element.entry, index + 1);
                     }
     
                 }
@@ -33,7 +33,7 @@ document.querySelector('header img').addEventListener('mouseup', e => {
     if(e.button === 0) {
         if(history.state.page !== 1) {
             // history.back();
-            router.setState(1);
+            router.setState(1, true);
 
         }
     }
@@ -42,9 +42,8 @@ document.querySelector('header img').addEventListener('mouseup', e => {
 document.querySelector('header h1').addEventListener('mouseup', e => {
     if(e.button  === 0) {
         if(history.state.page !== 0) {
-            history.back();
+            router.setState(0, true);    
         }
-        router.setState(0);    
     }
 })
 

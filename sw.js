@@ -9,7 +9,6 @@ const CACHE_NAME = 'cache-lab7';
 const urls = [
     './scripts/router.js',
     './scripts/script.js',
-    '/',
     './components/entry-page.js',
     './components/journal-entry.js'
 ];
