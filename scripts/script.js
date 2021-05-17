@@ -18,19 +18,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }).then(() => {
         document.querySelectorAll('main journal-entry').forEach((element, index) => {
             element.addEventListener('mouseup', e => {
-                if(history.state.page === 0) {
-                    router.setState(2, element.entry, index + 1);
+                if(e.button === 0) {
+                    if(history.state.page === 0) {
+                        router.setState(2, element.entry, index + 1);
+                    }
+    
                 }
             })
         })
     })
 });
 
-document.querySelector('header img').addEventListener('mouseup', (e) => {
-    router.setState(1);
+document.querySelector('header img').addEventListener('mouseup', e => {
+    if(e.button === 0) {
+        if(history.state.page !== 1) {
+            // history.back();
+            router.setState(1);
+
+        }
+    }
 });
 
-document.querySelector('header h1').addEventListener('mouseup', () => {
-    history.back();
-    router.setState(0);
+document.querySelector('header h1').addEventListener('mouseup', e => {
+    if(e.button  === 0) {
+        if(history.state.page !== 0) {
+            history.back();
+        }
+        router.setState(0);    
+    }
 })
+
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('/sw.js').then(function(registration) {
+        console.log('SW Registration success: ', registration.scope);
+      }, function(err) {
+        console.log('SW Registration error: ', err);
+      });
+    });
+  }
+  

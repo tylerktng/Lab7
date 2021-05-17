@@ -64,5 +64,4 @@ router.setState = function(newState, entry, entryIndex) {
 router.listener = function(event) {
     let state = event.state; 
     router.setState(state.page);
-    console.log(state.page);
 }
