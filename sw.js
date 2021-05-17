@@ -7,10 +7,11 @@
 
 const CACHE_NAME = 'cache-lab7';
 const urls = [
-    './scripts/router.js',
-    './scripts/script.js',
-    './components/entry-page.js',
-    './components/journal-entry.js'
+    '/Lab7/index.html',
+    '/Lab7/scripts/router.js',
+    '/Lab7/scripts/script.js',
+    '/Lab7/components/entry-page.js',
+    '/Lab7/components/journal-entry.js'
 ];
 
 self.addEventListener('install', (event) => {
