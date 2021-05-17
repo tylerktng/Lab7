@@ -5,9 +5,17 @@
 //   - One for activation ( check out MDN's clients.claim() for this step )
 //   - One for fetch requests
 
-const CACHE_NAME = 'cache-lab7';
-const urls = [
 
+
+
+const CACHE_NAME = 'Lab7-v1';
+const urls = [
+    '/Lab7/', 
+    '/Lab7/index.html',
+    '/Lab7/components/entry-page.js',
+    '/Lab7/components/journal-entry.js',
+    '/Lab7/scripts/script.js',
+    '/Lab7/scripts/router.js'
 ];
 
 self.addEventListener('install', (event) => {

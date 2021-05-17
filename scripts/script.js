@@ -6,6 +6,8 @@ window.onpopstate = router.listener;
 
 // Make sure you register your service worker here too
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
   fetch('https://cse110lab6.herokuapp.com/entries')
     .then(response => response.json())
@@ -48,12 +50,11 @@ document.querySelector('header h1').addEventListener('mouseup', e => {
 })
 
 if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/sw.js').then(function(registration) {
-        console.log('SW Registration success: ', registration.scope);
-      }, function(err) {
-        console.log('SW Registration error: ', err);
-      });
-    });
-  }
+    window.addEventListener('load', () => {
+        navigator.serviceWorker
+            .register('/sw.js')
+            .then(registration => console.log('SW Registration success: ', registration.scope), 
+        err => console.log('SW Registration error: ', err));
+    });       
+}
   
