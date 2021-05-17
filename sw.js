@@ -7,9 +7,7 @@
 
 const CACHE_NAME = 'cache-lab7';
 const urls = [
-    '/',
-    '/scripts/',
-    '/components/'
+    '/'
 ];
 
 self.addEventListener('install', (event) => {
